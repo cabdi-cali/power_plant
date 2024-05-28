@@ -1,0 +1,53 @@
+<!-- views/log_entry_views.xml -->
+<odoo>
+<!--    <record id="view_log_entry_tree" model="ir.ui.view">-->
+<!--&lt;!&ndash;        <field name="name">log.entry.tree</field>&ndash;&gt;-->
+<!--&lt;!&ndash;        <field name="model">log.entry</field>&ndash;&gt;-->
+<!--&lt;!&ndash;        <field name="arch" type="xml">&ndash;&gt;-->
+<!--&lt;!&ndash;            <tree string="Log Entries">&ndash;&gt;-->
+<!--&lt;!&ndash;                <field name="create_date"/>&ndash;&gt;-->
+<!--&lt;!&ndash;                <field name="name"/>&ndash;&gt;-->
+<!--&lt;!&ndash;                <field name="type"/>&ndash;&gt;-->
+<!--&lt;!&ndash;                <field name="level"/>&ndash;&gt;-->
+<!--&lt;!&ndash;                <field name="message"/>&ndash;&gt;-->
+<!--&lt;!&ndash;            </tree>&ndash;&gt;-->
+<!--&lt;!&ndash;        </field>&ndash;&gt;-->
+<!--&lt;!&ndash;    </record>&ndash;&gt;-->
+
+<!--&lt;!&ndash;    <record id="view_log_entry_form" model="ir.ui.view">&ndash;&gt;-->
+<!--&lt;!&ndash;        <field name="name">log.entry.form</field>&ndash;&gt;-->
+<!--&lt;!&ndash;        <field name="model">log.entry</field>&ndash;&gt;-->
+<!--&lt;!&ndash;        <field name="arch" type="xml">&ndash;&gt;-->
+<!--&lt;!&ndash;            <form string="Log Entry">&ndash;&gt;-->
+<!--&lt;!&ndash;                <header>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <button name="action_import_logs" type="object" class="oe_highlight" string="Import Logs"/>&ndash;&gt;-->
+<!--&lt;!&ndash;                </header>&ndash;&gt;-->
+<!--&lt;!&ndash;                <sheet>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <group>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <field name="create_date"/>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <field name="name"/>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <field name="type"/>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <field name="level"/>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <field name="message"/>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <field name="path"/>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <field name="func"/>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <field name="line"/>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <field name="dbname"/>&ndash;&gt;-->
+<!--&lt;!&ndash;                    </group>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <div class="oe_chatter">&ndash;&gt;-->
+<!--&lt;!&ndash;                        <field name="message_ids" widget="mail_thread"/>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <field name="activity_ids" widget="mail_activity"/>&ndash;&gt;-->
+<!--&lt;!&ndash;                    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                </sheet>&ndash;&gt;-->
+<!--&lt;!&ndash;            </form>&ndash;&gt;-->
+<!--&lt;!&ndash;        </field>&ndash;&gt;-->
+<!--&lt;!&ndash;    </record>&ndash;&gt;-->
+
+    <record id="action_log_entry" model="ir.actions.act_window">
+        <field name="name">Log Entries</field>
+        <field name="res_model">log.entry</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+<!--    <menuitem id="menu_log_entry_root" name="Log Entries" parent="base.menu_administration" action="action_log_entry"/>-->
+</odoo>

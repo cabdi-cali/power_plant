@@ -1,0 +1,14 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+power_plant.access_pp_hour24,access_pp_hour24,power_plant.model_pp_hour24,base.group_user,1,1,1,1
+power_plant.access_pp_pg_site,access_pp_pg_site,power_plant.model_pp_pg_site,base.group_user,1,1,1,1
+
+power_plant.access_pp_pgs,access_pp_pgs,power_plant.model_pp_pgs,base.group_user,1,1,1,1
+
+power_plant.access_pp_pg_data,access_pp_pg_data,power_plant.model_pp_pg_data,group_pg_data_time_full_access,1,1,1,1
+power_plant.access_pp_pg_data2,access_pp_pg_data,power_plant.model_pp_pg_data,group_pg_data_time_restricted_access,1,0,0,0
+
+
+access_pg_data_time_full,access_pg_data_time_full,model_pp_pg_data_time,base.group_user,1,1,1,1
+
+power_plant.access_custom_logs,access_custom_logs,power_plant.model_custom_logs,base.group_user,1,1,1,1
+power_plant.access_pp_pg_data_log,access_pp_pg_data_log,power_plant.model_pp_pg_data_log,base.group_user,1,1,1,1

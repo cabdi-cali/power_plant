@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_custom_logs_tree" model="ir.ui.view">
+        <field name="name">custom.logs.tree</field>
+        <field name="model">custom.logs</field>
+        <field name="arch" type="xml">
+            <tree string="Logs">
+                <field name="create_date"/>
+                <field name="name"/>
+                <field name="type"/>
+                <field name="level"/>
+                <field name="message"/>
+                <field name="path"/>
+                <field name="func"/>
+                <field name="line"/>
+                <field name="dbname"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_custom_logs_form" model="ir.ui.view">
+        <field name="name">custom.logs.form</field>
+        <field name="model">custom.logs</field>
+        <field name="arch" type="xml">
+            <form string="Log">
+                <group>
+                    <field name="create_date"/>
+                    <field name="name"/>
+                    <field name="type"/>
+                    <field name="level"/>
+                    <field name="message"/>
+                    <field name="path"/>
+                    <field name="func"/>
+                    <field name="line"/>
+                    <field name="dbname"/>
+                </group>
+            </form>
+        </field>
+    </record>
+
+
+
+    <record id="action_custom_logs" model="ir.actions.act_window">
+        <field name="name">Logs</field>
+        <field name="res_model">custom.logs</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+</odoo>

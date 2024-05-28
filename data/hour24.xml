@@ -1,0 +1,76 @@
+<odoo>
+    <data noupdate="1">
+        <record id="hour24_0" model="pp.hour24">
+            <field name="name">00:00:00</field>
+        </record>
+         <record id="hour24_1" model="pp.hour24">
+            <field name="name">01:00:00</field>
+        </record>
+         <record id="hour24_2" model="pp.hour24">
+            <field name="name">02:00:00</field>
+        </record>
+         <record id="hour24_3" model="pp.hour24">
+            <field name="name">03:00:00</field>
+        </record>
+         <record id="hour24_4" model="pp.hour24">
+            <field name="name">04:00:00</field>
+        </record>
+         <record id="hour24_5" model="pp.hour24">
+            <field name="name">05:00:00</field>
+        </record>
+         <record id="hour24_6" model="pp.hour24">
+            <field name="name">06:00:00</field>
+        </record>
+         <record id="hour24_7" model="pp.hour24">
+            <field name="name">07:00:00</field>
+        </record>
+         <record id="hour24_8" model="pp.hour24">
+            <field name="name">08:00:00</field>
+        </record>
+         <record id="hour24_9" model="pp.hour24">
+            <field name="name">09:00:00</field>
+        </record>
+         <record id="hour24_10" model="pp.hour24">
+            <field name="name">10:00:00</field>
+        </record>
+         <record id="hour24_11" model="pp.hour24">
+            <field name="name">11:00:00</field>
+        </record>
+         <record id="hour24_13" model="pp.hour24">
+            <field name="name">13:00:00</field>
+        </record>
+         <record id="hour24_14" model="pp.hour24">
+            <field name="name">14:00:00</field>
+        </record>
+         <record id="hour24_15" model="pp.hour24">
+            <field name="name">15:00:00</field>
+        </record>
+
+        <record id="hour24_16" model="pp.hour24">
+            <field name="name">16:00:00</field>
+        </record>
+        <record id="hour24_17" model="pp.hour24">
+            <field name="name">17:00:00</field>
+        </record>
+        <record id="hour24_18" model="pp.hour24">
+            <field name="name">18:00:00</field>
+        </record>
+        <record id="hour24_19" model="pp.hour24">
+            <field name="name">19:00:00</field>
+        </record>
+        <record id="hour24_20" model="pp.hour24">
+            <field name="name">20:00:00</field>
+        </record>
+        <record id="hour24_21" model="pp.hour24">
+            <field name="name">21:00:00</field>
+        </record>
+        <record id="hour24_22" model="pp.hour24">
+            <field name="name">22:00:00</field>
+        </record>
+        <record id="hour24_23" model="pp.hour24">
+            <field name="name">23:00:00</field>
+        </record>
+
+
+    </data>
+</odoo>

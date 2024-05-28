@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <menuitem id="menu_pp_root" name="Power Plant"/>
+    <menuitem id="menu_sub1" name="Config" parent="menu_pp_root"  />
+     <menuitem id="menu3" name="Create PGS" parent="menu_sub1" action="pp_config_pgs"/>
+    <menuitem id="menu1" name="Create Sites" parent="menu_sub1" action="pp_config_sites"/>
+
+
+     <menuitem id="menu_data" name="Data" parent="menu_pp_root" />
+    <menuitem id="data_menu1" name="Enter Data" parent="menu_data" action="pp_data_action"/>
+    <menuitem id="data_menu2" name="Logs" parent="menu_data" action="action_log_entry"/>
+
+
+<!--     <menuitem id="menu_custom_logs_root" name="Custom Logs" sequence="1000"/>-->
+
+<!--    <menuitem id="menu_custom_logs" name="Logs" parent="menu_custom_logs_root"-->
+<!--              action="action_custom_logs" sequence="10"/>-->
+
+</odoo>

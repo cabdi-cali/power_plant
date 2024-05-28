@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+<record id="pg_data_search_view" model="ir.ui.view">
+    <field name="name">pp.pg_data.search</field>
+    <field name="model">pp.pg_data</field>
+    <field name="arch" type="xml">
+        <search>
+            <field name="date" />
+            <field name="pg_id" string="Matoorka" />
+            <field name="total_kw" />
+            <!-- Add more fields if needed -->
+        </search>
+    </field>
+</record>
+
+    <record id="pg_data_tree" model="ir.ui.view">
+        <field name="name">Pgs</field>
+        <field name="model">pp.pg_data</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="date" />
+<!--                <field name="time" />-->
+                <field name="pg_id" />
+                <field name="total_kw" />
+            </tree>
+        </field>
+    </record>
+
+
+      <record id="view_form_pg_data" model="ir.ui.view">
+        <field name="name">pp.pg_data.form</field>
+        <field name="model">pp.pg_data</field>
+        <field name="arch" type="xml">
+            <form string="Power Generator Data Entry">
+                <sheet>
+                    <group>
+                        <field name="date"/>
+                        <field name="pg_id" options="{'no_create': True}"/>
+                    </group>
+                    <notebook>
+                        <page string="Time Details">
+                            <field name="times_data" mode="tree,form">
+                                <tree editable="bottom">
+                                    <field name="time" options="{'no_create': True}"/>
+                                    <field name="temp"/>
+                                    <field name="op"/>
+                                    <field name="bv"/>
+                                    <field name="hz"/>
+                                    <field name="voltage"/>
+                                    <field name="kw"/>
+                                    <field name="kva"/>
+                                    <field name="ampsl1"/>
+                                    <field name="ampsl2"/>
+                                    <field name="ampsl3"/>
+                                    <field name="trh"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+<!--                 <div class="oe_chatter">-->
+<!--                    <field name="message_follower_ids" widget="mail_followers"/>-->
+<!--                    <field name="message_ids" widget="mail_thread"/>-->
+<!--                    <field name="log_ids">-->
+<!--                        <tree>-->
+<!--                            <field name="create_date"/>-->
+<!--                            <field name="operation"/>-->
+<!--                            <field name="message"/>-->
+<!--                        </tree>-->
+<!--                    </field>-->
+<!--                </div>-->
+            </form>
+        </field>
+    </record>
+
+
+    <record id="pp_data_action" model="ir.actions.act_window">
+        <field name="name">Daily Entery</field>
+        <field name="res_model">pp.pg_data</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="pg_data_search_view" />
+    </record>
+</odoo>

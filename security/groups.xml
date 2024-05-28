@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data >
+
+         <record id="my_group_pg_data_category" model="ir.module.category">
+            <field name="name">Power generator data</field>
+        </record>
+        <!-- Group with full access -->
+        <record id="group_pg_data_time_full_access" model="res.groups">
+            <field name="name">PG Data Time Full Access</field>
+            <field name="category_id" ref="my_group_pg_data_category"/>
+        </record>
+
+        <!-- Group with restricted access -->
+        <record id="group_pg_data_time_restricted_access" model="res.groups">
+            <field name="name">PG Data Time Restricted Access</field>
+            <field name="category_id" ref="my_group_pg_data_category"/>
+        </record>
+    </data>
+</odoo>

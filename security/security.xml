@@ -1,0 +1,117 @@
+<odoo>
+    <data >
+        <record id="my_group_custom_category" model="ir.module.category">
+            <field name="name">Power generator data</field>
+        </record>
+        <record id="access_pp_pg_data_group" model="res.groups">
+            <field name="name">Power generator data entery</field>
+            <field name="category_id" ref="power_plant.my_group_custom_category"/>
+        </record>
+
+         <record id="access_pp_pg_data_extra_group" model="res.groups">
+            <field name="name">Power generator data entery 1</field>
+             <field name="category_id" ref="power_plant.my_group_custom_category"/>
+        </record>
+
+         <record id="access_pp_pg_data_extra_second_group" model="res.groups">
+            <field name="name">Power generator data entery 2</field>
+             <field name="category_id" ref="power_plant.my_group_custom_category"/>
+        </record>
+
+
+         <record id="pg_data_user_rule" model="ir.rule">
+            <field name="name">User: Own PG Data</field>
+            <field name="model_id" ref="model_pp_pg_data"/>
+            <field name="groups" eval="[(4, ref('base.group_user'))]"/>
+            <field name="domain_force">[('create_uid', '=', user.id)]</field>
+            <field name="perm_read" eval="1"/>
+            <field name="perm_write" eval="0"/>
+            <field name="perm_create" eval="0"/>
+            <field name="perm_unlink" eval="0"/>
+        </record>
+
+        <!-- Record Rule for Managers: Full access to all PG Data -->
+        <record id="pg_data_manager_rule" model="ir.rule">
+            <field name="name">Manager: All PG Data</field>
+            <field name="model_id" ref="model_pp_pg_data"/>
+            <field name="groups" eval="[(4, ref('base.group_system'))]"/>
+            <field name="domain_force">[(1, '=', 1)]</field>
+            <field name="perm_read" eval="1"/>
+            <field name="perm_write" eval="1"/>
+            <field name="perm_create" eval="1"/>
+            <field name="perm_unlink" eval="1"/>
+        </record>
+
+        <!-- Record Rule for Users: Can only read their own PG Data Logs -->
+        <record id="pg_data_log_user_rule" model="ir.rule">
+            <field name="name">User: Own PG Data Logs</field>
+            <field name="model_id" ref="model_pp_pg_data_log"/>
+            <field name="groups" eval="[(4, ref('base.group_user'))]"/>
+            <field name="domain_force">[('pg_data_id.create_uid', '=', user.id)]</field>
+            <field name="perm_read" eval="1"/>
+            <field name="perm_write" eval="0"/>
+            <field name="perm_create" eval="0"/>
+            <field name="perm_unlink" eval="0"/>
+        </record>
+
+        <!-- Record Rule for Managers: Full access to all PG Data Logs -->
+        <record id="pg_data_log_manager_rule" model="ir.rule">
+            <field name="name">Manager: All PG Data Logs</field>
+            <field name="model_id" ref="model_pp_pg_data_log"/>
+            <field name="groups" eval="[(4, ref('base.group_system'))]"/>
+            <field name="domain_force">[(1, '=', 1)]</field>
+            <field name="perm_read" eval="1"/>
+            <field name="perm_write" eval="1"/>
+            <field name="perm_create" eval="1"/>
+            <field name="perm_unlink" eval="1"/>
+        </record>
+
+<!--        &lt;!&ndash; Record Rule for Users: Can only read their own PG Data &ndash;&gt;-->
+<!--        <record id="pg_data_user_rule" model="ir.rule">-->
+<!--            <field name="name">User: Own PG Data</field>-->
+<!--            <field name="model_id" ref="model_pp_pg_data"/>-->
+<!--            <field name="groups" eval="[(4, ref('base.group_user'))]"/>-->
+<!--            <field name="domain_force">[('create_uid', '=', user.id)]</field>-->
+<!--            <field name="perm_read" eval="1"/>-->
+<!--            <field name="perm_write" eval="0"/>-->
+<!--            <field name="perm_create" eval="0"/>-->
+<!--            <field name="perm_unlink" eval="0"/>-->
+<!--        </record>-->
+
+<!--        &lt;!&ndash; Record Rule for Managers: Full access to all PG Data &ndash;&gt;-->
+<!--        <record id="pg_data_manager_rule" model="ir.rule">-->
+<!--            <field name="name">Manager: All PG Data</field>-->
+<!--            <field name="model_id" ref="model_pp_pg_data"/>-->
+<!--            <field name="groups" eval="[(4, ref('base.group_system'))]"/>-->
+<!--            <field name="domain_force">[(1, '=', 1)]</field>-->
+<!--            <field name="perm_read" eval="1"/>-->
+<!--            <field name="perm_write" eval="1"/>-->
+<!--            <field name="perm_create" eval="1"/>-->
+<!--            <field name="perm_unlink" eval="1"/>-->
+<!--        </record>-->
+
+<!--        &lt;!&ndash; Record Rule for Users: Can only read their own PG Data Logs &ndash;&gt;-->
+<!--        <record id="pg_data_log_user_rule" model="ir.rule">-->
+<!--            <field name="name">User: Own PG Data Logs</field>-->
+<!--            <field name="model_id" ref="model_pp_pg_data_log"/>-->
+<!--            <field name="groups" eval="[(4, ref('base.group_user'))]"/>-->
+<!--            <field name="domain_force">[('pg_data_id.create_uid', '=', user.id)]</field>-->
+<!--            <field name="perm_read" eval="1"/>-->
+<!--            <field name="perm_write" eval="0"/>-->
+<!--            <field name="perm_create" eval="0"/>-->
+<!--            <field name="perm_unlink" eval="0"/>-->
+<!--        </record>-->
+
+<!--        &lt;!&ndash; Record Rule for Managers: Full access to all PG Data Logs &ndash;&gt;-->
+<!--        <record id="pg_data_log_manager_rule" model="ir.rule">-->
+<!--            <field name="name">Manager: All PG Data Logs</field>-->
+<!--            <field name="model_id" ref="model_pp_pg_data_log"/>-->
+<!--            <field name="groups" eval="[(4, ref('base.group_system'))]"/>-->
+<!--            <field name="domain_force">[(1, '=', 1)]</field>-->
+<!--            <field name="perm_read" eval="1"/>-->
+<!--            <field name="perm_write" eval="1"/>-->
+<!--            <field name="perm_create" eval="1"/>-->
+<!--            <field name="perm_unlink" eval="1"/>-->
+<!--        </record>-->
+    </data>
+</odoo>
