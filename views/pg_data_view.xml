@@ -5,10 +5,15 @@
     <field name="model">pp.pg_data</field>
     <field name="arch" type="xml">
         <search>
-            <field name="date" />
-            <field name="pg_id" string="Matoorka" />
-            <field name="total_kw" />
+            <field name="date"/>
+<!--            <field name="pg_id" string="Matoorka" />-->
+
             <!-- Add more fields if needed -->
+            <group expand="1" string="Group By">
+<!--                <filter string="Day" date="date" interval="day"/>-->
+<!--                <filter string="Month" date="date" interval="month"/>-->
+<!--                <filter string="Year" date="date" interval="year"/>-->
+            </group>
         </search>
     </field>
 </record>
@@ -26,58 +31,107 @@
         </field>
     </record>
 
+    <!-- Graph View -->
+   <record id="pg_data_graph" model="ir.ui.view">
+    <field name="name">pp.pg_data.graph</field>
+    <field name="model">pp.pg_data</field>
+    <field name="arch" type="xml">
+        <graph string="PG Data Graph" type="bar">
+            <field name="date" type="row"/>
+            <field name="total_kw" type="measure"/>
+        </graph>
+    </field>
+</record>
 
-      <record id="view_form_pg_data" model="ir.ui.view">
-        <field name="name">pp.pg_data.form</field>
-        <field name="model">pp.pg_data</field>
-        <field name="arch" type="xml">
-            <form string="Power Generator Data Entry">
-                <sheet>
-                    <group>
-                        <field name="date"/>
-                        <field name="pg_id" options="{'no_create': True}"/>
-                    </group>
-                    <notebook>
-                        <page string="Time Details">
-                            <field name="times_data" mode="tree,form">
-                                <tree editable="bottom">
-                                    <field name="time" options="{'no_create': True}"/>
-                                    <field name="temp"/>
-                                    <field name="op"/>
-                                    <field name="bv"/>
-                                    <field name="hz"/>
-                                    <field name="voltage"/>
-                                    <field name="kw"/>
-                                    <field name="kva"/>
-                                    <field name="ampsl1"/>
-                                    <field name="ampsl2"/>
-                                    <field name="ampsl3"/>
-                                    <field name="trh"/>
-                                </tree>
-                            </field>
-                        </page>
-                    </notebook>
-                </sheet>
-<!--                 <div class="oe_chatter">-->
-<!--                    <field name="message_follower_ids" widget="mail_followers"/>-->
-<!--                    <field name="message_ids" widget="mail_thread"/>-->
-<!--                    <field name="log_ids">-->
-<!--                        <tree>-->
-<!--                            <field name="create_date"/>-->
-<!--                            <field name="operation"/>-->
-<!--                            <field name="message"/>-->
-<!--                        </tree>-->
-<!--                    </field>-->
-<!--                </div>-->
-            </form>
-        </field>
-    </record>
+
+   <record id="view_form_pg_data" model="ir.ui.view">
+    <field name="name">pp.pg_data.form</field>
+    <field name="model">pp.pg_data</field>
+    <field name="arch" type="xml">
+        <form string="Power Generator Data Entry">
+            <sheet>
+                <group>
+                    <field name="date" widget="date"/>
+                    <field name="pg_id" options="{'no_create': True}" context="{'show_pg_type': 1}"/>
+                    <field name="pg_type" invisible="1"/>
+                </group>
+                <notebook>
+                    <page string="Time Details">
+                        <field name="times_data" mode="tree,form">
+                            <tree editable="bottom">
+                                <field name="pg_type" invisible="1"/>
+                                <field name="time" options="{'no_create': True}"/>
+                                <field name="is_wind" invisible="1"/>
+                                <field name="kw" string="kW"/>
+                                <field name="wind_speed" string="Win Speed" attrs="{'invisible': [('is_wind', '=', False)]}"/>
+                                <field name="temp" />
+            <field name="op" attrs="{'invisible': [('is_wind', '=', True)]}"/>
+            <field name="bv" attrs="{'invisible': [('is_wind', '=', True)]}"/>
+            <field name="hz" attrs="{'invisible': [('is_wind', '=', True)]}"/>
+            <field name="voltage" string="Vol" attrs="{'invisible': [('is_wind', '=', True)]}"/>
+
+            <field name="kva" attrs="{'invisible': [('is_wind', '=', True)]}"/>
+            <field name="ampsl1" attrs="{'invisible': [('is_wind', '=', True)]}"/>
+            <field name="ampsl2" attrs="{'invisible': [('is_wind', '=', True)]}"/>
+            <field name="ampsl3" attrs="{'invisible': [('is_wind', '=', True)]}"/>
+            <field name="trh" attrs="{'invisible': [('is_wind', '=', True)]}"/>
+
+
+                            </tree>
+                        </field>
+                    </page>
+                </notebook>
+            </sheet>
+<!--           <script type="text/javascript">-->
+<!--               odoo.define('power_plant.pp.pg_data', function (require) {-->
+<!--                    "use strict";-->
+
+<!--                    var FormView = require('web.FormView');-->
+<!--                    var viewRegistry = require('web.view_registry');-->
+<!--                    var FormController = require('web.FormController');-->
+
+<!--                    var PGDataFormController = FormController.extend({-->
+<!--                        _update: function () {-->
+<!--                            this._super.apply(this, arguments);-->
+<!--                            this._toggleColumns();-->
+<!--                        },-->
+
+<!--                        _toggleColumns: function () {-->
+<!--                            var pg_type = this.model.get(this.handle).data.pg_type;-->
+<!--                            console.log("PG Type:", pg_type);-->
+
+<!--                            var $listView = this.$('.o_list_view');-->
+<!--                            if (pg_type === 'wind') {-->
+<!--                                $listView.find('th[data-name="op"], th[data-name="bv"], th[data-name="hz"], th[data-name="voltage"], th[data-name="kva"], th[data-name="ampsl1"], th[data-name="ampsl2"], th[data-name="ampsl3"], th[data-name="trh"]').hide();-->
+<!--                                $listView.find('td[data-name="op"], td[data-name="bv"], td[data-name="hz"], td[data-name="voltage"], td[data-name="kva"], td[data-name="ampsl1"], td[data-name="ampsl2"], td[data-name="ampsl3"], td[data-name="trh"]').hide();-->
+<!--                            } else {-->
+<!--                                $listView.find('th[data-name="wind_speed"]').hide();-->
+<!--                                $listView.find('td[data-name="wind_speed"]').hide();-->
+<!--                            }-->
+<!--                        },-->
+<!--                    });-->
+
+<!--                    var PGDataFormView = FormView.extend({-->
+<!--                        config: _.extend({}, FormView.prototype.config, {-->
+<!--                            Controller: PGDataFormController,-->
+<!--                        }),-->
+<!--                    });-->
+
+<!--                    viewRegistry.add('pg_data_form', PGDataFormView);-->
+<!--                });-->
+<!--            </script>-->
+        </form>
+    </field>
+</record>
+
 
 
     <record id="pp_data_action" model="ir.actions.act_window">
         <field name="name">Daily Entery</field>
         <field name="res_model">pp.pg_data</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">tree,form,graph</field>
+
         <field name="search_view_id" ref="pg_data_search_view" />
+
     </record>
 </odoo>

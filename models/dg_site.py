@@ -5,3 +5,4 @@ class DgSite(models.Model):
     _description="Dg Sites"
 
     name=fields.Char(string = "Site Name")
+

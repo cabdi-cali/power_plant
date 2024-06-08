@@ -7,8 +7,10 @@ class PgDataTime(models.Model):
     _description = "Power Generators Data for Each Time"
 
     pg_data_id = fields.Many2one("pp.pg_data", string="PG Data Reference", required=True, ondelete="cascade")
+    site_name = fields.Char(string="Site Name", readonly=True)
+    pg_type = fields.Char(related='pg_data_id.pg_id.pg_type', string="PG Type", store=True, readonly=True)
     time = fields.Many2one("pp.hour24", string='Time', required=True)
-    temp = fields.Float(string="Temperature")
+    temp = fields.Float(string="Temp")
     op = fields.Float(string="op")
     bv = fields.Float(string="bv")
     hz = fields.Float(string="Hertz")
@@ -19,8 +21,14 @@ class PgDataTime(models.Model):
     ampsl2 = fields.Float(string="Ampsl2")
     ampsl3 = fields.Float(string="Ampsl3")
     trh = fields.Float(string="Trh")
+    wind_speed = fields.Float(string = "Wind Speed m/s")
+    is_wind = fields.Boolean(string="Is Wind", compute="_compute_is_wind", store=True)
     # create_uid = fields.Many2one('res.users', string='Created by', readonly=True)
 
+    @api.depends('pg_type')
+    def _compute_is_wind(self):
+        for record in self:
+            record.is_wind = record.pg_type == 'wind'
     @api.constrains('time', 'pg_data_id')
     def _check_unique_time(self):
         for record in self:

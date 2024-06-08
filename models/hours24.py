@@ -5,3 +5,8 @@ class Hour24(models.Model):
     _description="Tables for hour in 24"
 
     name=fields.Char(string="Hour")
+
+
+
+
+

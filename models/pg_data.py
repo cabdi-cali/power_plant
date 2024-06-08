@@ -34,6 +34,7 @@ class PgData(models.Model):
 
     date = fields.Date(string="Date", required=True)
     pg_id = fields.Many2one("pp.pgs", string="PG", required=True)
+    pg_type = fields.Char(string="PG Type", readonly=True)
     times_data = fields.One2many("pp.pg_data_time", "pg_data_id", string="Times Data")
     # create_uid = fields.Many2one('res.users', string='Created by', readonly=True)
     total_kw = fields.Float(string='Total Kilowatt', compute='_compute_total_kw', store=True)
@@ -61,6 +62,12 @@ class PgData(models.Model):
             log_texts = [log.message for log in logs]
             record.log_messages = "\n".join(log_texts)
 
+    @api.onchange('pg_id')
+    def _onchange_pg_id(self):
+        if self.pg_id:
+            self.pg_type = self.pg_id.pg_type
+        else:
+            self.pg_type = False
     @api.model
     def create(self, vals):
         record = super(PgData, self).create(vals)

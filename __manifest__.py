@@ -27,6 +27,11 @@
     'demo': [
         # 'demo/demo_data.xml',  Uncomment this line if you plan to provide demo data
     ],
+'assets': {
+        'web.assets_backend': [
+            'power_plant/static/src/js/pg_data.js',
+        ],
+    },
     'installable': True,
     'application': True,
     'auto_install': False,
