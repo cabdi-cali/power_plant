@@ -5,6 +5,7 @@ power_plant.access_pp_pg_site,access_pp_pg_site,power_plant.model_pp_pg_site,gro
 power_plant.access_pp_pg_site2,access_pp_pg_site,power_plant.model_pp_pg_site,group_pg_data_time_full_access,1,1,1,1
 
 power_plant.access_pp_pgs,access_pp_pgs,power_plant.model_pp_pgs,group_pg_data_time_restricted_access,1,0,0,0
+power_plant.access_pp_pgs2,access_pp_pgs,power_plant.model_pp_pgs,group_pg_data_time_full_access,1,1,1,1
 
 
 power_plant.access_pp_pg_data,access_pp_pg_data,power_plant.model_pp_pg_data,group_pg_data_time_full_access,1,1,1,1
